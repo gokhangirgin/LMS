@@ -1,0 +1,84 @@
+//created on: 02.Nis.2013
+package com.sample 
+
+rule "will be discarded - dry in open air" 
+    when
+		$L : Laundry( !IsBedding() )  
+        Laundry( getWashCount() >= 5 ) 
+        $I : DecisionItem()
+    then 
+        $I.setToBeDiscarded(false);
+        $I.setDryInDryer(false);
+        $I.setBedding(false);
+		System.out.println("will be discarded - will dry in open air");
+        update($I);  
+        retract($L);
+end
+
+rule "will be discarded - will dry in dryer" 
+    when
+		$L : Laundry( IsBedding() ) 
+        Laundry( getWashCount() >= 5 ) 
+        $I : DecisionItem();
+    then 
+        $I.setToBeDiscarded(true);
+        $I.setDryInDryer(true);
+        $I.setBedding(true);
+		System.out.println("will be discarded - will dry in dryer");
+        update($I);  
+        retract($L);
+end
+
+rule "will not be discarded - will dry in open air" 
+    when
+		$L : Laundry( !IsBedding() )  
+        Laundry( getWashCount() < 5 ) 
+        $I : DecisionItem()
+    then 
+        $I.setToBeDiscarded(false);
+        $I.setDryInDryer(false);
+        $I.setBedding(false);
+		System.out.println("will not be discarded - will dry in open air"); 
+        update($I);  
+        retract($L);
+end 
+
+rule "will not be discarded - will dry in dryer" 
+    when
+		$L : Laundry( IsBedding() ) 
+        Laundry( getWashCount() < 5 )  
+        $I : DecisionItem()
+    then 
+        $I.setToBeDiscarded(false);
+        $I.setDryInDryer(true);
+        $I.setBedding(true);
+		System.out.println("will not be discarded - will dry in dryer"); 
+        update($I);  
+        retract($L);
+end 
+
+/*
+rule "dry in open air" 
+    when
+		$L : Laundry( !IsBedding() )  
+        $I : Item()
+    then 
+        $I.setDryInDryer(false);
+        $I.setBedding(true);
+		System.out.println("will dry in open air");
+        update($I);  
+        retract($L);
+end
+
+rule "dry in dryer" 
+    when
+		$L : Laundry( IsBedding() )  
+        $I : Item()
+    then 
+        $I.setDryInDryer(true);
+		System.out.println("will dry in dryer");
+        update($I);  
+        retract($L);
+end
+*/
+ 

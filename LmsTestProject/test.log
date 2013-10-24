@@ -1,0 +1,332 @@
+<object-stream>
+<org.drools.audit.event.RuleFlowVariableLogEvent>
+  <type>32</type>
+  <processId>com.sample.ruleflow</processId>
+  <processName>ruleflow</processName>
+  <processInstanceId>8</processInstanceId>
+  <variableId>item</variableId>
+  <variableInstanceId>item</variableInstanceId>
+  <objectToString>com.sample.Laundry@73d4d493</objectToString>
+</org.drools.audit.event.RuleFlowVariableLogEvent>
+<org.drools.audit.event.RuleFlowVariableLogEvent>
+  <type>33</type>
+  <processId>com.sample.ruleflow</processId>
+  <processName>ruleflow</processName>
+  <processInstanceId>8</processInstanceId>
+  <variableId>item</variableId>
+  <variableInstanceId>item</variableInstanceId>
+  <objectToString>com.sample.Laundry@73d4d493</objectToString>
+</org.drools.audit.event.RuleFlowVariableLogEvent>
+<org.drools.audit.event.RuleFlowLogEvent>
+  <type>8</type>
+  <processId>com.sample.ruleflow</processId>
+  <processName>ruleflow</processName>
+  <processInstanceId>8</processInstanceId>
+</org.drools.audit.event.RuleFlowLogEvent>
+<org.drools.audit.event.RuleFlowNodeLogEvent>
+  <type>24</type>
+  <processId>com.sample.ruleflow</processId>
+  <processName>ruleflow</processName>
+  <processInstanceId>8</processInstanceId>
+  <nodeId>1</nodeId>
+  <nodeName>Start</nodeName>
+  <nodeInstanceId>0</nodeInstanceId>
+</org.drools.audit.event.RuleFlowNodeLogEvent>
+<org.drools.audit.event.RuleFlowNodeLogEvent>
+  <type>26</type>
+  <processId>com.sample.ruleflow</processId>
+  <processName>ruleflow</processName>
+  <processInstanceId>8</processInstanceId>
+  <nodeId>1</nodeId>
+  <nodeName>Start</nodeName>
+  <nodeInstanceId>0</nodeInstanceId>
+</org.drools.audit.event.RuleFlowNodeLogEvent>
+<org.drools.audit.event.RuleFlowNodeLogEvent>
+  <type>24</type>
+  <processId>com.sample.ruleflow</processId>
+  <processName>ruleflow</processName>
+  <processInstanceId>8</processInstanceId>
+  <nodeId>7</nodeId>
+  <nodeName>Started</nodeName>
+  <nodeInstanceId>1</nodeInstanceId>
+</org.drools.audit.event.RuleFlowNodeLogEvent>
+<org.drools.audit.event.RuleFlowNodeLogEvent>
+  <type>26</type>
+  <processId>com.sample.ruleflow</processId>
+  <processName>ruleflow</processName>
+  <processInstanceId>8</processInstanceId>
+  <nodeId>7</nodeId>
+  <nodeName>Started</nodeName>
+  <nodeInstanceId>1</nodeInstanceId>
+</org.drools.audit.event.RuleFlowNodeLogEvent>
+<org.drools.audit.event.RuleFlowNodeLogEvent>
+  <type>24</type>
+  <processId>com.sample.ruleflow</processId>
+  <processName>ruleflow</processName>
+  <processInstanceId>8</processInstanceId>
+  <nodeId>4</nodeId>
+  <nodeName>IsBedding</nodeName>
+  <nodeInstanceId>2</nodeInstanceId>
+</org.drools.audit.event.RuleFlowNodeLogEvent>
+<org.drools.audit.event.RuleFlowNodeLogEvent>
+  <type>26</type>
+  <processId>com.sample.ruleflow</processId>
+  <processName>ruleflow</processName>
+  <processInstanceId>8</processInstanceId>
+  <nodeId>4</nodeId>
+  <nodeName>IsBedding</nodeName>
+  <nodeInstanceId>2</nodeInstanceId>
+</org.drools.audit.event.RuleFlowNodeLogEvent>
+<org.drools.audit.event.RuleFlowNodeLogEvent>
+  <type>24</type>
+  <processId>com.sample.ruleflow</processId>
+  <processName>ruleflow</processName>
+  <processInstanceId>8</processInstanceId>
+  <nodeId>12</nodeId>
+  <nodeName>DiscardNeeded?</nodeName>
+  <nodeInstanceId>3</nodeInstanceId>
+</org.drools.audit.event.RuleFlowNodeLogEvent>
+<org.drools.audit.event.RuleFlowNodeLogEvent>
+  <type>26</type>
+  <processId>com.sample.ruleflow</processId>
+  <processName>ruleflow</processName>
+  <processInstanceId>8</processInstanceId>
+  <nodeId>12</nodeId>
+  <nodeName>DiscardNeeded?</nodeName>
+  <nodeInstanceId>3</nodeInstanceId>
+</org.drools.audit.event.RuleFlowNodeLogEvent>
+<org.drools.audit.event.RuleFlowNodeLogEvent>
+  <type>24</type>
+  <processId>com.sample.ruleflow</processId>
+  <processName>ruleflow</processName>
+  <processInstanceId>8</processInstanceId>
+  <nodeId>9</nodeId>
+  <nodeName>Discard</nodeName>
+  <nodeInstanceId>4</nodeInstanceId>
+</org.drools.audit.event.RuleFlowNodeLogEvent>
+<org.drools.audit.event.RuleFlowNodeLogEvent>
+  <type>26</type>
+  <processId>com.sample.ruleflow</processId>
+  <processName>ruleflow</processName>
+  <processInstanceId>8</processInstanceId>
+  <nodeId>9</nodeId>
+  <nodeName>Discard</nodeName>
+  <nodeInstanceId>4</nodeInstanceId>
+</org.drools.audit.event.RuleFlowNodeLogEvent>
+<org.drools.audit.event.RuleFlowNodeLogEvent>
+  <type>24</type>
+  <processId>com.sample.ruleflow</processId>
+  <processName>ruleflow</processName>
+  <processInstanceId>8</processInstanceId>
+  <nodeId>11</nodeId>
+  <nodeName>Gateway</nodeName>
+  <nodeInstanceId>5</nodeInstanceId>
+</org.drools.audit.event.RuleFlowNodeLogEvent>
+<org.drools.audit.event.RuleFlowNodeLogEvent>
+  <type>26</type>
+  <processId>com.sample.ruleflow</processId>
+  <processName>ruleflow</processName>
+  <processInstanceId>8</processInstanceId>
+  <nodeId>11</nodeId>
+  <nodeName>Gateway</nodeName>
+  <nodeInstanceId>5</nodeInstanceId>
+</org.drools.audit.event.RuleFlowNodeLogEvent>
+<org.drools.audit.event.RuleFlowNodeLogEvent>
+  <type>24</type>
+  <processId>com.sample.ruleflow</processId>
+  <processName>ruleflow</processName>
+  <processInstanceId>8</processInstanceId>
+  <nodeId>13</nodeId>
+  <nodeName>Finished</nodeName>
+  <nodeInstanceId>6</nodeInstanceId>
+</org.drools.audit.event.RuleFlowNodeLogEvent>
+<org.drools.audit.event.RuleFlowNodeLogEvent>
+  <type>26</type>
+  <processId>com.sample.ruleflow</processId>
+  <processName>ruleflow</processName>
+  <processInstanceId>8</processInstanceId>
+  <nodeId>13</nodeId>
+  <nodeName>Finished</nodeName>
+  <nodeInstanceId>6</nodeInstanceId>
+</org.drools.audit.event.RuleFlowNodeLogEvent>
+<org.drools.audit.event.RuleFlowNodeLogEvent>
+  <type>24</type>
+  <processId>com.sample.ruleflow</processId>
+  <processName>ruleflow</processName>
+  <processInstanceId>8</processInstanceId>
+  <nodeId>3</nodeId>
+  <nodeName>End</nodeName>
+  <nodeInstanceId>7</nodeInstanceId>
+</org.drools.audit.event.RuleFlowNodeLogEvent>
+<org.drools.audit.event.RuleFlowNodeLogEvent>
+  <type>26</type>
+  <processId>com.sample.ruleflow</processId>
+  <processName>ruleflow</processName>
+  <processInstanceId>8</processInstanceId>
+  <nodeId>3</nodeId>
+  <nodeName>End</nodeName>
+  <nodeInstanceId>7</nodeInstanceId>
+</org.drools.audit.event.RuleFlowNodeLogEvent>
+<org.drools.audit.event.RuleFlowLogEvent>
+  <type>10</type>
+  <processId>com.sample.ruleflow</processId>
+  <processName>ruleflow</processName>
+  <processInstanceId>8</processInstanceId>
+</org.drools.audit.event.RuleFlowLogEvent>
+<org.drools.audit.event.RuleFlowLogEvent>
+  <type>11</type>
+  <processId>com.sample.ruleflow</processId>
+  <processName>ruleflow</processName>
+  <processInstanceId>8</processInstanceId>
+</org.drools.audit.event.RuleFlowLogEvent>
+<org.drools.audit.event.RuleFlowNodeLogEvent>
+  <type>27</type>
+  <processId>com.sample.ruleflow</processId>
+  <processName>ruleflow</processName>
+  <processInstanceId>8</processInstanceId>
+  <nodeId>3</nodeId>
+  <nodeName>End</nodeName>
+  <nodeInstanceId>7</nodeInstanceId>
+</org.drools.audit.event.RuleFlowNodeLogEvent>
+<org.drools.audit.event.RuleFlowNodeLogEvent>
+  <type>25</type>
+  <processId>com.sample.ruleflow</processId>
+  <processName>ruleflow</processName>
+  <processInstanceId>8</processInstanceId>
+  <nodeId>3</nodeId>
+  <nodeName>End</nodeName>
+  <nodeInstanceId>7</nodeInstanceId>
+</org.drools.audit.event.RuleFlowNodeLogEvent>
+<org.drools.audit.event.RuleFlowNodeLogEvent>
+  <type>27</type>
+  <processId>com.sample.ruleflow</processId>
+  <processName>ruleflow</processName>
+  <processInstanceId>8</processInstanceId>
+  <nodeId>13</nodeId>
+  <nodeName>Finished</nodeName>
+  <nodeInstanceId>6</nodeInstanceId>
+</org.drools.audit.event.RuleFlowNodeLogEvent>
+<org.drools.audit.event.RuleFlowNodeLogEvent>
+  <type>25</type>
+  <processId>com.sample.ruleflow</processId>
+  <processName>ruleflow</processName>
+  <processInstanceId>8</processInstanceId>
+  <nodeId>13</nodeId>
+  <nodeName>Finished</nodeName>
+  <nodeInstanceId>6</nodeInstanceId>
+</org.drools.audit.event.RuleFlowNodeLogEvent>
+<org.drools.audit.event.RuleFlowNodeLogEvent>
+  <type>27</type>
+  <processId>com.sample.ruleflow</processId>
+  <processName>ruleflow</processName>
+  <processInstanceId>8</processInstanceId>
+  <nodeId>11</nodeId>
+  <nodeName>Gateway</nodeName>
+  <nodeInstanceId>5</nodeInstanceId>
+</org.drools.audit.event.RuleFlowNodeLogEvent>
+<org.drools.audit.event.RuleFlowNodeLogEvent>
+  <type>25</type>
+  <processId>com.sample.ruleflow</processId>
+  <processName>ruleflow</processName>
+  <processInstanceId>8</processInstanceId>
+  <nodeId>11</nodeId>
+  <nodeName>Gateway</nodeName>
+  <nodeInstanceId>5</nodeInstanceId>
+</org.drools.audit.event.RuleFlowNodeLogEvent>
+<org.drools.audit.event.RuleFlowNodeLogEvent>
+  <type>27</type>
+  <processId>com.sample.ruleflow</processId>
+  <processName>ruleflow</processName>
+  <processInstanceId>8</processInstanceId>
+  <nodeId>9</nodeId>
+  <nodeName>Discard</nodeName>
+  <nodeInstanceId>4</nodeInstanceId>
+</org.drools.audit.event.RuleFlowNodeLogEvent>
+<org.drools.audit.event.RuleFlowNodeLogEvent>
+  <type>25</type>
+  <processId>com.sample.ruleflow</processId>
+  <processName>ruleflow</processName>
+  <processInstanceId>8</processInstanceId>
+  <nodeId>9</nodeId>
+  <nodeName>Discard</nodeName>
+  <nodeInstanceId>4</nodeInstanceId>
+</org.drools.audit.event.RuleFlowNodeLogEvent>
+<org.drools.audit.event.RuleFlowNodeLogEvent>
+  <type>27</type>
+  <processId>com.sample.ruleflow</processId>
+  <processName>ruleflow</processName>
+  <processInstanceId>8</processInstanceId>
+  <nodeId>12</nodeId>
+  <nodeName>DiscardNeeded?</nodeName>
+  <nodeInstanceId>3</nodeInstanceId>
+</org.drools.audit.event.RuleFlowNodeLogEvent>
+<org.drools.audit.event.RuleFlowNodeLogEvent>
+  <type>25</type>
+  <processId>com.sample.ruleflow</processId>
+  <processName>ruleflow</processName>
+  <processInstanceId>8</processInstanceId>
+  <nodeId>12</nodeId>
+  <nodeName>DiscardNeeded?</nodeName>
+  <nodeInstanceId>3</nodeInstanceId>
+</org.drools.audit.event.RuleFlowNodeLogEvent>
+<org.drools.audit.event.RuleFlowNodeLogEvent>
+  <type>27</type>
+  <processId>com.sample.ruleflow</processId>
+  <processName>ruleflow</processName>
+  <processInstanceId>8</processInstanceId>
+  <nodeId>4</nodeId>
+  <nodeName>IsBedding</nodeName>
+  <nodeInstanceId>2</nodeInstanceId>
+</org.drools.audit.event.RuleFlowNodeLogEvent>
+<org.drools.audit.event.RuleFlowNodeLogEvent>
+  <type>25</type>
+  <processId>com.sample.ruleflow</processId>
+  <processName>ruleflow</processName>
+  <processInstanceId>8</processInstanceId>
+  <nodeId>4</nodeId>
+  <nodeName>IsBedding</nodeName>
+  <nodeInstanceId>2</nodeInstanceId>
+</org.drools.audit.event.RuleFlowNodeLogEvent>
+<org.drools.audit.event.RuleFlowNodeLogEvent>
+  <type>27</type>
+  <processId>com.sample.ruleflow</processId>
+  <processName>ruleflow</processName>
+  <processInstanceId>8</processInstanceId>
+  <nodeId>7</nodeId>
+  <nodeName>Started</nodeName>
+  <nodeInstanceId>1</nodeInstanceId>
+</org.drools.audit.event.RuleFlowNodeLogEvent>
+<org.drools.audit.event.RuleFlowNodeLogEvent>
+  <type>25</type>
+  <processId>com.sample.ruleflow</processId>
+  <processName>ruleflow</processName>
+  <processInstanceId>8</processInstanceId>
+  <nodeId>7</nodeId>
+  <nodeName>Started</nodeName>
+  <nodeInstanceId>1</nodeInstanceId>
+</org.drools.audit.event.RuleFlowNodeLogEvent>
+<org.drools.audit.event.RuleFlowNodeLogEvent>
+  <type>27</type>
+  <processId>com.sample.ruleflow</processId>
+  <processName>ruleflow</processName>
+  <processInstanceId>8</processInstanceId>
+  <nodeId>1</nodeId>
+  <nodeName>Start</nodeName>
+  <nodeInstanceId>0</nodeInstanceId>
+</org.drools.audit.event.RuleFlowNodeLogEvent>
+<org.drools.audit.event.RuleFlowNodeLogEvent>
+  <type>25</type>
+  <processId>com.sample.ruleflow</processId>
+  <processName>ruleflow</processName>
+  <processInstanceId>8</processInstanceId>
+  <nodeId>1</nodeId>
+  <nodeName>Start</nodeName>
+  <nodeInstanceId>0</nodeInstanceId>
+</org.drools.audit.event.RuleFlowNodeLogEvent>
+<org.drools.audit.event.RuleFlowLogEvent>
+  <type>9</type>
+  <processId>com.sample.ruleflow</processId>
+  <processName>ruleflow</processName>
+  <processInstanceId>8</processInstanceId>
+</org.drools.audit.event.RuleFlowLogEvent>
+</object-stream>

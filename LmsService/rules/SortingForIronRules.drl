@@ -1,0 +1,32 @@
+//created on: May 14, 2013
+package com.sample
+
+rule "Goes to normal iron bin"
+    when
+		$L : Laundry( getMaterial() != 1 && !IsBedding())   
+		$bd : BinDecision()
+    then
+		$bd.setBinNumber(1);
+		update($bd);
+		retract($bd);
+end
+
+rule "Goes to do not iron bin"
+    when
+		$L : Laundry( getMaterial() == 1 )  
+		$bd : BinDecision()
+    then
+		$bd.setBinNumber(1);
+		update($bd);
+		retract($bd);
+end
+
+rule "Goes to iron with machine bin"
+    when
+		$L : Laundry( IsBedding() )  
+		$bd : BinDecision()
+    then
+		$bd.setBinNumber(3);
+		update($bd);
+		retract($bd);
+end

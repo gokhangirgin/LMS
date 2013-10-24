@@ -1,0 +1,82 @@
+<?xml version="1.0" encoding="UTF-8"?> 
+<process xmlns="http://drools.org/drools-5.0/process"
+         xmlns:xs="http://www.w3.org/2001/XMLSchema-instance"
+         xs:schemaLocation="http://drools.org/drools-5.0/process drools-processes-5.0.xsd"
+         type="RuleFlow" name="flow" id="com.sample.sortForIron" package-name="com.sample" >
+
+  <header>
+    <variables>
+      <variable name="LaundryFactory" >
+        <type name="org.drools.process.core.datatype.impl.type.ObjectDataType" className="com.sample.LaundryFactory" />
+      </variable>
+      <variable name="binNumber" >
+        <type name="org.drools.process.core.datatype.impl.type.IntegerDataType" />
+      </variable>
+    </variables>
+  </header>
+
+  <nodes>
+    <start id="1" name="Start" x="20" y="155" width="100" height="49" />
+    <end id="2" name="End" x="338" y="249" width="49" height="49" />
+    <workItem id="3" name="Get Decisions" x="425" y="154" width="100" height="48" >
+      <work name="WebService" >
+        <parameter name="Url" >
+          <type name="org.drools.process.core.datatype.impl.type.StringDataType" />
+          <value>http://localhost:8080/LmsService/LMS/getSortingDecisionForIron</value>
+        </parameter>
+      </work>
+      <mapping type="in" from="binNumber" to="binNumber" />
+      <mapping type="out" from="binNumber" to="binNumber" />
+    </workItem>
+    <split id="4" name="Gateway" x="563" y="154" width="49" height="49" type="3" >
+      <constraints>
+        <constraint toNodeId="8" toType="DROOLS_DEFAULT" name="3" priority="1" type="code" dialect="java" >return binNumber == 3;</constraint>
+        <constraint toNodeId="7" toType="DROOLS_DEFAULT" name="2" priority="1" type="code" dialect="java" >return binNumber == 2;</constraint>
+        <constraint toNodeId="6" toType="DROOLS_DEFAULT" name="1" priority="1" type="code" dialect="java" >return binNumber == 1;</constraint>
+      </constraints>
+    </split>
+    <join id="5" name="FinishSort" x="788" y="154" width="49" height="49" type="2" />
+    <actionNode id="6" name="Normal" x="644" y="75" width="134" height="48" >
+        <action type="expression" dialect="java" >LaundryFactory.CurrentBin.removeLaundry(LaundryFactory.CurrentLaundry);
+LaundryFactory.getBin("NormalIronBin").putLaundry(LaundryFactory.CurrentLaundry);
+System.out.println("in normal iron bin");</action>
+    </actionNode>
+    <actionNode id="7" name="In Ironing Machine" x="644" y="154" width="134" height="48" >
+        <action type="expression" dialect="java" >LaundryFactory.CurrentBin.removeLaundry(LaundryFactory.CurrentLaundry);
+LaundryFactory.getBin("IronWithMachineBin").putLaundry(LaundryFactory.CurrentLaundry);
+System.out.println("in iron with machine bin");</action>
+    </actionNode>
+    <actionNode id="8" name="Do Not Iron" x="644" y="235" width="134" height="48" >
+        <action type="expression" dialect="java" >LaundryFactory.CurrentBin.removeLaundry(LaundryFactory.CurrentLaundry);
+LaundryFactory.getBin("DoNotIronBin").putLaundry(LaundryFactory.CurrentLaundry);
+System.out.println("in dont iron bin");</action>
+    </actionNode>
+    <join id="9" name="Gateway" x="114" y="154" width="49" height="49" type="2" />
+    <actionNode id="12" name="Get Laundry" x="200" y="155" width="101" height="48" >
+        <action type="expression" dialect="java" >LaundryFactory.CurrentLaundry = LaundryFactory.CurrentBin.GetNextLaundry();</action>
+    </actionNode>
+    <split id="13" name="Gateway" x="337" y="154" width="49" height="49" type="3" >
+      <constraints>
+        <constraint toNodeId="2" toType="DROOLS_DEFAULT" name="end" priority="1" type="code" dialect="java" >return LaundryFactory.CurrentLaundry == null;</constraint>
+        <constraint toNodeId="3" toType="DROOLS_DEFAULT" priority="1" type="code" dialect="java" >return LaundryFactory.CurrentLaundry != null;</constraint>
+      </constraints>
+    </split>
+  </nodes>
+
+  <connections>
+    <connection from="13" to="2" />
+    <connection from="13" to="3" />
+    <connection from="3" to="4" />
+    <connection from="6" to="5" />
+    <connection from="8" to="5" />
+    <connection from="7" to="5" />
+    <connection from="4" to="6" />
+    <connection from="4" to="7" />
+    <connection from="4" to="8" />
+    <connection from="5" to="9" bendpoints="[917,36;230,36]" />
+    <connection from="1" to="9" />
+    <connection from="9" to="12" />
+    <connection from="12" to="13" />
+  </connections>
+
+</process>

@@ -1,0 +1,78 @@
+<?xml version="1.0" encoding="UTF-8"?> 
+<process xmlns="http://drools.org/drools-5.0/process"
+         xmlns:xs="http://www.w3.org/2001/XMLSchema-instance"
+         xs:schemaLocation="http://drools.org/drools-5.0/process drools-processes-5.0.xsd"
+         type="RuleFlow" name="flow" id="com.sample.generalFlow" package-name="com.sample" >
+
+  <header>
+    <variables>
+      <variable name="Item" >
+        <type name="org.drools.process.core.datatype.impl.type.ObjectDataType" className="models.Item" />
+      </variable>
+      <variable name="LaundryFactory" >
+        <type name="org.drools.process.core.datatype.impl.type.ObjectDataType" className="com.sample.LaundryFactory" />
+      </variable>
+    </variables>
+  </header>
+
+  <nodes>
+    <start id="1" name="Start" x="200" y="19" width="110" height="48" />
+    <end id="2" name="End" x="200" y="529" width="110" height="48" />
+    <subProcess id="3" name="Wash" x="170" y="117" width="110" height="48" processId="com.sample.generalWash" >
+      <mapping type="in" from="LaundryFactory" to="LaundryFactory" />
+      <mapping type="in" from="Item" to="Item" />
+      <mapping type="out" from="LaundryFactory" to="LaundryFactory" />
+    </subProcess>
+    <subProcess id="4" name="Dry" x="170" y="217" width="110" height="48" processId="com.sample.generalDry" >
+      <mapping type="in" from="LaundryFactory" to="LaundryFactory" />
+      <mapping type="out" from="LaundryFactory" to="LaundryFactory" />
+    </subProcess>
+    <subProcess id="5" name="Iron" x="170" y="317" width="110" height="48" processId="com.sample.generalIron" >
+      <mapping type="in" from="LaundryFactory" to="LaundryFactory" />
+      <mapping type="out" from="LaundryFactory" to="LaundryFactory" />
+    </subProcess>
+    <subProcess id="6" name="Package" x="170" y="417" width="110" height="49" processId="com.sample.generalPackage" >
+      <mapping type="in" from="LaundryFactory" to="LaundryFactory" />
+      <mapping type="out" from="LaundryFactory" to="LaundryFactory" />
+    </subProcess>
+    <split id="7" name="Gateway" x="495" y="217" width="49" height="49" type="3" >
+      <constraints>
+        <constraint toNodeId="10" toType="DROOLS_DEFAULT" priority="1" type="code" dialect="java" >return !LaundryFactory.BinWashed;</constraint>
+        <constraint toNodeId="4" toType="DROOLS_DEFAULT" name="Bin Washed" priority="1" type="code" dialect="java" >return LaundryFactory.BinWashed;</constraint>
+      </constraints>
+    </split>
+    <split id="8" name="Gateway" x="416" y="317" width="49" height="49" type="3" >
+      <constraints>
+        <constraint toNodeId="10" toType="DROOLS_DEFAULT" priority="1" type="code" dialect="java" >return !LaundryFactory.BinDried;</constraint>
+        <constraint toNodeId="5" toType="DROOLS_DEFAULT" name="Bin Dried" priority="1" type="code" dialect="java" >return LaundryFactory.BinDried;</constraint>
+      </constraints>
+    </split>
+    <split id="9" name="Gateway" x="337" y="417" width="49" height="49" type="3" >
+      <constraints>
+        <constraint toNodeId="10" toType="DROOLS_DEFAULT" priority="1" type="code" dialect="java" >return !LaundryFactory.BinIroned;</constraint>
+        <constraint toNodeId="6" toType="DROOLS_DEFAULT" name="Bin Ironed" priority="1" type="code" dialect="java" >return LaundryFactory.BinIroned;</constraint>
+      </constraints>
+    </split>
+    <join id="10" name="End" x="337" y="529" width="110" height="49" type="2" />
+    <actionNode id="11" name="ResetValues" x="241" y="632" width="112" height="48" >
+        <action type="expression" dialect="java" >LaundryFactory.ResetV();</action>
+    </actionNode>
+  </nodes>
+
+  <connections>
+    <connection from="11" to="2" />
+    <connection from="1" to="3" />
+    <connection from="7" to="4" />
+    <connection from="8" to="5" />
+    <connection from="9" to="6" />
+    <connection from="3" to="7" />
+    <connection from="4" to="8" />
+    <connection from="5" to="9" />
+    <connection from="7" to="10" />
+    <connection from="8" to="10" />
+    <connection from="9" to="10" />
+    <connection from="6" to="10" />
+    <connection from="10" to="11" />
+  </connections>
+
+</process>

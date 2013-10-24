@@ -1,0 +1,34 @@
+//created on: Apr 21, 2013
+package com.sample
+
+//list any import classes here.
+rule "goes to white bin"
+	when 
+		$L : Laundry( getColor() == 0)
+		$bd : BinDecision()
+	then 
+		$bd.setBinNumber(1);
+		update($bd);
+		retract($bd);
+end
+
+rule "goes to colored bin"
+	when 
+		$L : Laundry( getColor() == 1 )  
+		$bd : BinDecision()
+	then 
+		$bd.setBinNumber(2);
+		update($bd);
+		retract($bd);
+end
+
+rule "goes to discard bin"
+	when 
+		$L : Laundry( IsBedding() ) 
+        Laundry( getWashCount() >= 5 ) 
+		$bd : BinDecision()
+	then 
+		$bd.setBinNumber(-1);
+		update($bd);
+		retract($bd);
+end

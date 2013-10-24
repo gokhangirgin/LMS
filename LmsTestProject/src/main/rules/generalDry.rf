@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="UTF-8"?> 
+<process xmlns="http://drools.org/drools-5.0/process"
+         xmlns:xs="http://www.w3.org/2001/XMLSchema-instance"
+         xs:schemaLocation="http://drools.org/drools-5.0/process drools-processes-5.0.xsd"
+         type="RuleFlow" name="flow" id="com.sample.generalDry" package-name="com.sample" >
+
+  <header>
+    <variables>
+      <variable name="LaundryFactory" >
+        <type name="org.drools.process.core.datatype.impl.type.ObjectDataType" className="com.sample.LaundryFactory" />
+      </variable>
+      <variable name="DryingAttributes" >
+        <type name="org.drools.process.core.datatype.impl.type.ObjectDataType" className="com.sample.DryingAttributes" />
+      </variable>
+    </variables>
+  </header>
+
+  <nodes>
+    <start id="1" name="Start" x="16" y="66" width="48" height="48" />
+    <subProcess id="2" name="sortForDry" x="96" y="66" width="110" height="48" processId="com.sample.sortForDry" >
+      <mapping type="in" from="LaundryFactory" to="LaundryFactory" />
+      <mapping type="out" from="LaundryFactory" to="LaundryFactory" />
+    </subProcess>
+    <end id="4" name="End" x="624" y="66" width="48" height="48" />
+    <split id="5" name="Gateway" x="350" y="66" width="49" height="49" type="3" >
+      <constraints>
+        <constraint toNodeId="8" toType="DROOLS_DEFAULT" priority="1" type="code" dialect="java" >return (LaundryFactory.CurrentBin != null);</constraint>
+        <constraint toNodeId="6" toType="DROOLS_DEFAULT" name="Wait" priority="1" type="code" dialect="java" >return (LaundryFactory.CurrentBin == null);</constraint>
+      </constraints>
+    </split>
+    <join id="6" name="Gateway" x="543" y="66" width="49" height="49" type="2" />
+    <actionNode id="8" name="Dry" x="431" y="16" width="80" height="48" >
+        <action type="expression" dialect="java" >LaundryFactory.CurrentBin.Dry(new DryingAttributes()); 
+LaundryFactory.BinDried = true;</action>
+    </actionNode>
+    <actionNode id="9" name="Set Bin" x="238" y="66" width="80" height="48" >
+        <action type="expression" dialect="java" >LaundryFactory.CurrentBin = LaundryFactory.AnyFullDryBin();</action>
+    </actionNode>
+  </nodes>
+
+  <connections>
+    <connection from="1" to="2" />
+    <connection from="6" to="4" />
+    <connection from="9" to="5" />
+    <connection from="5" to="6" />
+    <connection from="8" to="6" />
+    <connection from="5" to="8" />
+    <connection from="2" to="9" />
+  </connections>
+
+</process>

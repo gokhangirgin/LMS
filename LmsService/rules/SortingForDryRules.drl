@@ -1,0 +1,33 @@
+//created on: May 14, 2013
+package com.sample
+
+rule "Goes to silk bin"
+    when
+		$L : Laundry( getMaterial() == 0 )  
+		$bd : BinDecision()
+    then
+		$bd.setBinNumber(1);
+		update($bd);
+		retract($bd);
+end
+
+rule "Goes to cotton bin"
+    when
+		$L : Laundry( getMaterial() == 1 )  
+		$bd : BinDecision()
+    then
+		$bd.setBinNumber(2);
+		update($bd);
+		retract($bd);
+end
+
+rule "Goes to open air bin"
+    when
+		$L : Laundry( getMaterial() == 2 )  
+		//$C : Laundry( getCustomer().IsAllergic() )  
+		$bd : BinDecision()
+    then
+		$bd.setBinNumber(3);
+		update($bd);
+		retract($bd);
+end

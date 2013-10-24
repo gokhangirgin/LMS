@@ -1,0 +1,172 @@
+
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <title>LMS | Customer</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="">
+    <meta name="author" content="">
+    <META HTTP-EQUIV="Content-Type" CONTENT="text/html; charset=ISO-8859-9">
+	<META HTTP-EQUIV="Content-Type" CONTENT="text/html; charset=windows-1254">
+	<META NAME="Content-Language" CONTENT="tr">
+
+    <!-- Le styles -->
+    <link href="../bootstrap/css/bootstrap.css" rel="stylesheet">
+    <link href="../bootstrap/css/bootstrap-responsive.css" rel="stylesheet">
+    <link href="../bootstrap/css/style.css" rel="stylesheet">
+
+
+  </head>
+
+  <body>
+
+    <div class="container">
+
+        <h3 class="muted">LMS</h3>
+        <div class="navbar">
+          <div class="navbar-inner">
+            <div class="container">
+              <ul class="nav">
+                <li class="active"><a href="#">Orders</a></li>
+                <li><a href="#newOrder" data-id="newOrder" data-type="modal">New 
+				Order</a></li>
+                <li><a href="#" data-id="contactForm" data-type="modal">Contact</a></li>
+               </ul>
+            </div>
+          </div>
+        </div><!-- /.navbar -->
+        
+      <div class="row-fluid">
+      	<div class="span4 box" id="customer">
+      		<h4 style="margin-bottom:5px">Welcome <span data-bind="text:FullName" style="color:#005ccc; opacity:0.8">
+			Gökhan Girgin</span>!</h4>
+			<!--Profil-->
+  			<table class="table table-hover">
+  					<tr>
+  						<td style="width:40%; font-weight:bold">E-mail</td>
+  						<td data-bind="text:Email">gokhangirgin@msn.com</td>
+  					</tr>
+					<tr>
+  						<td style="width:40%; font-weight:bold">Telephone</td>
+  						<td data-bind="text:Phone">2321234567</td>
+  					</tr>
+  					<tr>
+  						<td style="width:40%; font-weight:bold">Address</td>
+  						<td data-bind="text:Address">Lorem ipsum dolor sit amet, consectetur adipiscing 
+						elit. Sed aliquam orci ut diam eleifend pulvinar. Donec 
+						hendrerit mollis ipsum, quis ullamcorper libero faucibus 
+						id. Phasellus enim odio, ultricies vestibulum tempor a, 
+						varius non ipsum</td>
+  					</tr>
+
+  			</table>
+      	</div>
+        <div class="span8">
+          <table class="table table-striped table-bordered" id="orders">
+            <thead>
+              <tr><th>Id</th><th style="width:75%">Progress</th><th>Details</th></tr>
+            </thead>
+            <tbody>
+            <!-- ko foreach: Orders -->
+             <tr class="rowlink"><td data-bind="text: Id">34512</td><td><div class="progress progress-info progress-striped">
+  <div class="bar" style="width: 82%" data-bind="attr:{'style':'width: ' + Percentage}"></div>
+</div></td><td><a href="#orderDetails" data-id="" data-type="details" data-bind="attr : {'data-id' : Id }" class="btn"><i class="iconic-eye"></i></a></td></tr>
+			<!-- /ko -->
+            </tbody>
+          </table>
+          
+          	<table class="table table-striped table-bordered" id="orderDetails" style="display:none">
+          	<thead>
+          		<tr>
+          			<th>Id</th>
+          			<th>Type</th>
+          			<th>Location</th>
+          			<th>Color</th>
+          			<th>Weight</th>
+          			<th>Washed Before</th>
+          			<th>Material</th>
+          		</tr>
+          	</thead>
+          	<tbody>
+          	<!-- ko foreach: Items -->
+          		<tr>
+          			<td data-bind="text: Id"></td>
+          			<td data-bind="text: Type"></td>
+          			<td data-bind="text: Location"></td>
+          			<td data-bind="text: Color"></td>
+          			<td data-bind="text: Weight"></td>
+          			<td data-bind="text: WashedCount"></td>
+          			<td data-bind="text: Material"></td>
+          		</tr>
+          	<!-- /ko -->
+          	</tbody>
+          	</table>
+        </div>
+      </div>
+
+      <hr>
+
+      <div class="footer">
+        <p>© LMS 2013</p>
+      </div>
+	
+    </div>
+	<div id="newOrder" class="modal hide fade" tabindex="-1" role="dialog">
+	<div class="modal-header"><strong>New Order</strong></div>
+			<form class="modal-form" action="#">
+			    <div class="modal-body"> 
+			      <div class="control-group">
+			      
+			        <div class="controls">
+			         
+			        </div>
+			      </div>
+			    </div>
+			    <div class="modal-footer">
+			    <span id="result"></span>
+			    <button class="btn" data-dismiss="modal" aria-hidden="true">
+				Kapat</button>
+			    <button type="submit" data-method="ajax" class="btn btn-success">
+				Kaydet</button>
+			</div>
+		</form>
+	</div>
+	<div id="contactForm" class="modal hide fade" tabindex="-1" role="dialog">
+		<div class="modal-header"><strong>Contact</strong></div>
+		<form class="modal-form" action="#">
+			    <div class="modal-body"> 
+			      <div class="control-group">
+			      	  Message
+			        <div class="controls">
+			         <textarea style="width:95%"></textarea>
+			        </div>
+			      </div>
+			    </div>
+			    <div class="modal-footer">
+			    <span id="result"></span>
+			    <button class="btn" data-dismiss="modal" aria-hidden="true">
+				Close</button>
+			    <button type="submit" data-method="ajax" class="btn btn-success">
+				Post</button>
+			</div>
+		</form>
+
+	</div>
+
+    <script src="../bootstrap/js/jquery-1.9.1.min.js"></script>
+    <script src="../bootstrap/js/bootstrap.min.js"></script>
+    <script src="../bootstrap/js/knockout-2.2.1.js"></script>
+    <script src="../bootstrap/js/Customer.js"></script>
+    <script type="text/javascript">
+    $(function(){
+    	$('tbody.rowlink').rowlink();
+    	$(document).on("click","a[data-type=modal]",function(){
+    		var obj = $(this);
+    		var id ="#" + obj.data("id");
+    		$(id).modal('show');
+    	});				
+    });
+    </script>
+  </body>
+</html>

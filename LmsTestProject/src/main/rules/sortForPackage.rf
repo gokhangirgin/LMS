@@ -1,0 +1,86 @@
+<?xml version="1.0" encoding="UTF-8"?> 
+<process xmlns="http://drools.org/drools-5.0/process"
+         xmlns:xs="http://www.w3.org/2001/XMLSchema-instance"
+         xs:schemaLocation="http://drools.org/drools-5.0/process drools-processes-5.0.xsd"
+         type="RuleFlow" name="flow" id="com.sample.sortForPackage" package-name="com.sample" >
+
+  <header>
+    <variables>
+      <variable name="LaundryFactory" >
+        <type name="org.drools.process.core.datatype.impl.type.ObjectDataType" className="com.sample.LaundryFactory" />
+      </variable>
+      <variable name="binNumber" >
+        <type name="org.drools.process.core.datatype.impl.type.IntegerDataType" />
+      </variable>
+    </variables>
+  </header>
+
+  <nodes>
+    <split id="16" name="Gateway" x="311" y="224" width="49" height="49" type="3" >
+      <constraints>
+        <constraint toNodeId="2" toType="DROOLS_DEFAULT" name="end" priority="1" type="code" dialect="java" >return LaundryFactory.CurrentLaundry == null;</constraint>
+        <constraint toNodeId="3" toType="DROOLS_DEFAULT" priority="1" type="code" dialect="java" >return LaundryFactory.CurrentLaundry != null;</constraint>
+      </constraints>
+    </split>
+    <start id="1" name="Start" x="12" y="226" width="100" height="49" />
+    <end id="2" name="End" x="311" y="325" width="49" height="49" />
+    <actionNode id="18" name="Get Laundry" x="177" y="225" width="101" height="48" >
+        <action type="expression" dialect="java" >LaundryFactory.CurrentLaundry = LaundryFactory.CurrentBin.GetNextLaundry();</action>
+    </actionNode>
+    <workItem id="3" name="Get Decisions" x="384" y="226" width="100" height="48" >
+      <work name="WebService" >
+        <parameter name="Url" >
+          <type name="org.drools.process.core.datatype.impl.type.StringDataType" />
+          <value>http://localhost:8080/LmsService/LMS/getSortingDecisionForPackage</value>
+        </parameter>
+      </work>
+      <mapping type="in" from="binNumber" to="binNumber" />
+      <mapping type="out" from="binNumber" to="binNumber" />
+    </workItem>
+    <split id="4" name="Gateway" x="516" y="226" width="49" height="49" type="3" >
+      <constraints>
+        <constraint toNodeId="8" toType="DROOLS_DEFAULT" name="3" priority="1" type="code" dialect="java" >return binNumber == 3;</constraint>
+        <constraint toNodeId="7" toType="DROOLS_DEFAULT" name="2" priority="1" type="code" dialect="java" >return binNumber == 2;</constraint>
+        <constraint toNodeId="14" toType="DROOLS_DEFAULT" name="4" priority="1" type="code" dialect="java" >return binNumber == 4;</constraint>
+        <constraint toNodeId="6" toType="DROOLS_DEFAULT" name="1" priority="1" type="code" dialect="java" >return binNumber == 1;</constraint>
+      </constraints>
+    </split>
+    <join id="5" name="FinishSort" x="763" y="226" width="49" height="49" type="2" />
+    <actionNode id="6" name="North District" x="597" y="106" width="134" height="48" >
+        <action type="expression" dialect="java" >LaundryFactory.CurrentBin.removeLaundry(LaundryFactory.CurrentLaundry); 
+LaundryFactory.getBin("NorthBin").putLaundry(LaundryFactory.CurrentLaundry);</action>
+    </actionNode>
+    <actionNode id="7" name="South District" x="597" y="186" width="134" height="48" >
+        <action type="expression" dialect="java" >LaundryFactory.CurrentBin.removeLaundry(LaundryFactory.CurrentLaundry); 
+LaundryFactory.getBin("SouthBin").putLaundry(LaundryFactory.CurrentLaundry);</action>
+    </actionNode>
+    <actionNode id="8" name="East District" x="597" y="266" width="134" height="48" >
+        <action type="expression" dialect="java" >LaundryFactory.CurrentBin.removeLaundry(LaundryFactory.CurrentLaundry); 
+LaundryFactory.getBin("EastBin").putLaundry(LaundryFactory.CurrentLaundry);</action>
+    </actionNode>
+    <actionNode id="14" name="West District" x="597" y="346" width="134" height="48" >
+        <action type="expression" dialect="java" >LaundryFactory.CurrentBin.removeLaundry(LaundryFactory.CurrentLaundry); 
+LaundryFactory.getBin("WestBin").putLaundry(LaundryFactory.CurrentLaundry);</action>
+    </actionNode>
+    <join id="15" name="Gateway" x="97" y="224" width="49" height="49" type="2" />
+  </nodes>
+
+  <connections>
+    <connection from="18" to="16" />
+    <connection from="16" to="2" />
+    <connection from="15" to="18" />
+    <connection from="16" to="3" />
+    <connection from="3" to="4" />
+    <connection from="6" to="5" />
+    <connection from="8" to="5" />
+    <connection from="7" to="5" />
+    <connection from="14" to="5" />
+    <connection from="4" to="6" />
+    <connection from="4" to="7" />
+    <connection from="4" to="8" />
+    <connection from="4" to="14" />
+    <connection from="5" to="15" bendpoints="[895,83;232,81]" />
+    <connection from="1" to="15" />
+  </connections>
+
+</process>
