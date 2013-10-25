@@ -1,4 +1,4 @@
-## A Context-Aware Architecture to Laundry Management System
+### A Context-Aware Architecture to Laundry Management System
 
 Developed with these technologies
 
@@ -35,7 +35,7 @@ Desktop (WindowBuilder)
 it is ready to do simulation and you can also view progress of operations via android application or web application
 
 #### Project Members
-===
+
   Gökhan Girgin
   
   Efdal Ustaoğlu
