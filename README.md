@@ -1,7 +1,4 @@
-LMS
-===
-
-A Context-Aware Architecture to Laundry Management System
+## A Context-Aware Architecture to Laundry Management System
 
 Developed with these technologies
 
@@ -12,7 +9,7 @@ Java Web Services (restEasy)
 Hibernate
 MySQL
 
-Presentation Parts of Application
+### Presentation Parts of Application
 
 Android
 
@@ -20,8 +17,8 @@ Web App (Html,jQuery, Twitter Bootstrap)
 
 Desktop (WindowBuilder)
 
-How to Build
-===
+### How to Build
+
 1) Setup jBoss 7.1
 
 2) Setup MySQL and LMS_DBv6.sql 
@@ -37,7 +34,7 @@ How to Build
 
 it is ready to do simulation and you can also view progress of operations via android application or web application
 
-Project Members
+#### Project Members
 ===
   Gökhan Girgin
   
